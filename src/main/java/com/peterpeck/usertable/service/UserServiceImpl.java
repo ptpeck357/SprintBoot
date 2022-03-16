@@ -33,8 +33,14 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-//    @Override
-//    public User updateUserById(User user, int userid) {
-//        return userRepository.save(books).get();
-//    }
+    @Override
+    public User updateUserById(User updateUser, int userid) {
+        User currentUser = userRepository.findById(userid).get();
+
+        currentUser.setEmail(updateUser.getEmail());
+        currentUser.setName(updateUser.getName());
+        currentUser.setPhone(updateUser.getPhone());
+
+        return userRepository.save(currentUser);
+    }
 }

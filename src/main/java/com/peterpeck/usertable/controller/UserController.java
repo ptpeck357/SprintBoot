@@ -2,6 +2,7 @@ package com.peterpeck.usertable.controller;
 import java.util.*;
 
 import com.peterpeck.usertable.model.User;
+import com.peterpeck.usertable.repository.UserRepository;
 import com.peterpeck.usertable.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/")
 public class UserController {
+
     @Autowired
     private UserService userService;
 
@@ -31,12 +33,12 @@ public class UserController {
     @DeleteMapping("/delete/{userid}")
     public String delete(@PathVariable("userid") int userid){
         userService.deleteUserById(userid);
-        return "User is deleted";
+        return "User is deleted!";
     }
 //
-//    @PutMapping("/update/{userid}")
-//    public String update(@PathVariable("userid") int userid){
-//        userService.updateUserById(userid);
-//        return "User is updated!";
-//    }
+    @PutMapping("/update/{userid}")
+    public String update(@RequestBody User updatedUser, @PathVariable("userid") int userid){
+        userService.updateUserById(updatedUser, userid);
+        return "User is updated!";
+    }
 }

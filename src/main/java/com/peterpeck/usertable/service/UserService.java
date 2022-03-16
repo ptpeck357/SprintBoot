@@ -4,6 +4,9 @@ import java.util.*;
 import com.peterpeck.usertable.model.User;
 
 public interface UserService {
-    public User saveUser(User user);
-    public List<User> getAllUsers();
+     User saveUser(User user);
+     User getUserById(int userid);
+//     User deleteUserById(int userid);
+//     User updateUserById(int userid);
+     List<User> getAllUsers();
 }

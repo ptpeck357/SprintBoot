@@ -7,19 +7,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/")
 public class UserController {
     @Autowired
     private UserService userService;
-
-    @PostMapping("/add")
-    public String add(@RequestBody User user){
-        userService.saveUser(user);
-        return "New student is added";
-    }
 
     @GetMapping("/getAll")
     public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
+
+    @PostMapping("/save")
+    public String add(@RequestBody User user){
+        userService.saveUser(user);
+        return "New student is added";
+    }
+
+    @GetMapping("/get/{userid}")
+    public User getUsers(@PathVariable("userid") int userid){
+        return userService.getUserById(userid);
+    }
+
+//    @DeleteMapping("/delete/{userid}")
+//    public String delete(@PathVariable("userid") int userid){
+//        userService.deleteUserById(userid);
+//        return "User is deleted";
+//    }
+//
+//    @PutMapping("/update/{userid}")
+//    public String update(@PathVariable("userid") int userid){
+//        userService.updateUserById(userid);
+//        return "User is updated!";
+//    }
 }

@@ -28,11 +28,11 @@ public class UserController {
         return userService.getUserById(userid);
     }
 
-//    @DeleteMapping("/delete/{userid}")
-//    public String delete(@PathVariable("userid") int userid){
-//        userService.deleteUserById(userid);
-//        return "User is deleted";
-//    }
+    @DeleteMapping("/delete/{userid}")
+    public String delete(@PathVariable("userid") int userid){
+        userService.deleteUserById(userid);
+        return "User is deleted";
+    }
 //
 //    @PutMapping("/update/{userid}")
 //    public String update(@PathVariable("userid") int userid){

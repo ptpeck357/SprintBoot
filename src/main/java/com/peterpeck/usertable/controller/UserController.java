@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/")
+@CrossOrigin
 public class UserController {
 
     @Autowired
@@ -22,7 +23,7 @@ public class UserController {
     @PostMapping("/save")
     public String add(@RequestBody User user){
         userService.saveUser(user);
-        return "New student is added";
+        return "New user is added!";
     }
 
     @GetMapping("/get/{userid}")
